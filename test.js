@@ -32,5 +32,5 @@ it("Order 13 Croissant should return 2 packs of 5 and 1 pack of 3", () => {
     assert.equal(orderDetails.totalPrice, 25.85)
     assert.equal(orderDetails.items.length, 2)
     assert.equal(orderDetails.items.some(i => i.packSize === 5 && i.price === 9.95 && i.multiple === 2), true)
-    assert.equal(orderDetails.items.some(i => i.packSize === 1 && i.price === 5.95 &&  i.multiple === 1), true)
+    assert.equal(orderDetails.items.some(i => i.packSize === 3 && i.price === 5.95 &&  i.multiple === 1), true)
 })

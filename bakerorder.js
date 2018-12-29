@@ -49,14 +49,14 @@ const packOrder = (amount, packList, code) => {
                     }
                 } else if (!prePackedItem[i] && prePackedItem[i - packSize]) {
                     prePackedItem[i] = {
-                        "totalPrice": prePackedItem[i - packSize].totalPrice + packList[j][1],
+                        "totalPrice": (prePackedItem[i - packSize].totalPrice * 100 + packList[j][1] * 100) / 100,
                         "itemsCount": prePackedItem[i - packSize].itemsCount + 1,
                         "items": updateItems(prePackedItem[i - packSize].items.slice(), packList[j])
                     }
                 } else if (prePackedItem[i] && prePackedItem[i - packSize]) {
                     if (prePackedItem[i - packSize].itemsCount + 1 < prePackedItem[i].itemsCount) {
                         prePackedItem[i] = {
-                            "totalPrice": prePackedItem[i - packSize].totalPrice + packList[j][1],
+                            "totalPrice": (prePackedItem[i - packSize].totalPrice * 100 + packList[j][1] * 100) / 100,
                             "itemsCount": prePackedItem[i - packSize].itemsCount + 1,
                             "items": updateItems(prePackedItem[i - packSize].items.slice(), packList[j])
                         }
