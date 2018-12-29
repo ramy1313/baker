@@ -17,7 +17,7 @@ const items = {
 
 const order = (amount, code) => {
     const packList = items[code]
-    const pack = packList.filter(p => p[0] == amount)
+    let pack = packList.filter(p => p[0] == amount)
     if (pack.length !== 0) {
         return {
             "totalPrice": pack[0][1],
@@ -29,7 +29,19 @@ const order = (amount, code) => {
                 }
             ]
         }
-    } else return null
+    } else if ((pack = packList.filter(p => amount % p[0] === 0)).length !== 0) {
+        const multiple = amount / pack[0][0]
+        return {
+            "totalPrice": pack[0][1] * multiple,
+            "items": [
+                {
+                    "packSize": pack[0][0],
+                    "price": pack[0][1],
+                    "multiple": multiple
+                }
+            ]
+        }
+    } else null
 }
 
 
