@@ -34,3 +34,12 @@ it("Order 13 Croissant should return 2 packs of 5 and 1 pack of 3", () => {
     assert.equal(orderDetails.items.some(i => i.packSize === 5 && i.price === 9.95 && i.multiple === 2), true)
     assert.equal(orderDetails.items.some(i => i.packSize === 3 && i.price === 5.95 &&  i.multiple === 1), true)
 })
+
+it("Empty order for fractions", () => {
+    let orderDetails = bakerOrder.order(1, "CF")
+    assert.equal(orderDetails.totalPrice, 0)
+    assert.equal(orderDetails.items.length, 0)
+    orderDetails = bakerOrder.order(4, "CF")
+    assert.equal(orderDetails.totalPrice, 0)
+    assert.equal(orderDetails.items.length, 0)
+})

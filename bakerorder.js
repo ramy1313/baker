@@ -76,6 +76,8 @@ const order = (amount, code) => {
     } else {
         packResult = packOrder(amount, items[code], code)
     }
+
+    if(!packResult) return { "totalPrice": 0, "items": [] }
     const { itemsCount, ...result} = packResult
     
     return result
